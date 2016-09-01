@@ -1,0 +1,25 @@
+<p> Welcome visitor! </p>
+
+
+<p> Please sign the guestbook or leave a comment! </p>
+<%= form_for @new_message do |message| %>
+
+		<div>
+			<%= message.label :Name %>
+			<%= message.text_field :user %>
+		</div>		
+
+		<div>
+			<%= message.label :Type_your_message_here! %>
+			<%= message.text_field :body %>
+		</div>
+
+	<%= message.submit %>
+<% end %>
+
+<% @message.each do |x| %>
+	<div>
+		<p><%= x.user %> signed this guestbook <%= (@time.to_i - x.created_at.strftime("%s").to_i)/3600 %> days ago:</p>
+		<p><%= x.body %><p><br>
+	</div>
+<% end %>
