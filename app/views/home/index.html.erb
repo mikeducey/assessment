@@ -5,6 +5,7 @@
 </div>
 
 <div class = "main">
+	<div class = "space">
 	<div class = "newVisitorBox">
 	<p> Please sign the guestbook or leave a comment! </p>
 		<%= form_for @new_message do |message| %>
@@ -23,12 +24,16 @@
 		<% end %>
 		<%= link_to "API data for database", "/api/messages" %>
 	</div>
+	</div>
+
 <% @message.each do |x| %>
+	<div class = "space">
 	<div class = "guestbookEntry">
 		<div class = "guestbookEntry_text">
-			<p><%= x.user %> signed this guestbook <%= (@time.to_i - x.created_at.strftime("%s").to_i)/3600 %> days ago:</p>
-			<p><%= x.body %><p><br>
-			</div>
+			<p><%= x.user %> signed this guestbook <%= (@time.to_i - x.created_at.strftime("%s").to_i)/86400 %> day(s) ago:</p>
+			<p><%= x.body %></p><br>
+		</div>
+	</div>
 	</div>
 <% end %>
 </div>
